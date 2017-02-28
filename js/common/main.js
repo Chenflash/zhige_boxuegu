@@ -12,7 +12,8 @@ requirejs.config({
        //写的路径配置
        userList:'js/user/list',
        userProfile:'js/user/profile',
-       common:'js/common'
+       common:'js/common',
+       login:'js/home/login'
 
 
    } ,
@@ -34,10 +35,6 @@ require(['jquery','bootstrap','common']);
 
 
 
-
-
-
-        
     //获取页面的pathname,然后对应的加载js
     var pathname=window.location.pathname;
     switch (pathname){
@@ -46,6 +43,9 @@ require(['jquery','bootstrap','common']);
             break;
         case '/html/user/profile.html':
             require(['userProfile']);
+            break;
+        case '/html/home/login.html':
+            require(['login']);
             break;
 
     }
