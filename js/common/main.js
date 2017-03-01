@@ -7,6 +7,7 @@ requirejs.config({
         bootstrap: 'lib/bootstrap/js/bootstrap.min',
         jqueryCookie: 'lib/jquery-cookie/jquery.cookie',
         nprogress:'/lib/nprogress/nprogress',
+        template:'/lib/artTemplate-3.0.1/template',
 
         // 自己写的路径配置
         userList: 'js/user/list',
@@ -124,12 +125,6 @@ require(['jquery', 'bootstrap','common'],function(){
            case '/html/teacher/list.html':
                require(['teacherList']);
                break;
-
-
-
-
-
-
 
 
 

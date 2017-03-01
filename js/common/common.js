@@ -1,5 +1,13 @@
 define(['jquery', 'jqueryCookie'], function($, undefined) {
 
+    //ajax加载loading
+    $(document).ajaxStart(function() {
+        $('.overlay').show();
+    }).ajaxStop(function() {
+        $('.overlay').hide();
+    });
+
+
     // 左侧导航下拉列表
     $('.navs a').on('click', function() {
         $(this).next().slideToggle();
@@ -15,8 +23,6 @@ define(['jquery', 'jqueryCookie'], function($, undefined) {
     //获取路径名
     var pathname=window.location.pathname;
     $('.navs a').removeClass('active').filter('[href="'+pathname+'"]').addClass('active').parents('ul').show();
-
-
 
 
 

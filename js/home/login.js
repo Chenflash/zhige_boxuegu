@@ -44,7 +44,7 @@ define(['jquery','jqueryCookie'],function($,undefined){
             //成功请求回调
             success:function(data){
                 //如果返回的结果code为200的话，证明登录成功
-                if(data.code===200){
+                if(data.code ===200){
 
                     $.cookie('userInfo',JSON.stringify(data.result),{path:'/'});
                     //跳转到首页
