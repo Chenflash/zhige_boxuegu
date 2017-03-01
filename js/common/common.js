@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 define(['jquery', 'jqueryCookie'], function($, undefined) {
 
     //ajax加载loading
@@ -9,10 +10,18 @@ define(['jquery', 'jqueryCookie'], function($, undefined) {
 
 
     // 左侧导航下拉列表
+=======
+/**
+ * Created by hom on 2017/2/25.
+ */
+define(['jquery'],function($){
+    // 菜单下拉
+>>>>>>> 71eb6ff75713c252746848c7c8af1eecf7abe744
     $('.navs a').on('click', function() {
         $(this).next().slideToggle();
     });
 
+<<<<<<< HEAD
     /*
     * 根据页面路径的左侧导航
     * 1.获取当前页面的pathname
@@ -57,3 +66,9 @@ define(['jquery', 'jqueryCookie'], function($, undefined) {
 
 
 });
+=======
+
+
+
+})
+>>>>>>> 71eb6ff75713c252746848c7c8af1eecf7abe744
