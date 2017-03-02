@@ -1,39 +1,27 @@
-<<<<<<< HEAD
 define(['jquery', 'jqueryCookie'], function($, undefined) {
 
-    //ajax加载loading
+    // ajax请求loading
     $(document).ajaxStart(function() {
         $('.overlay').show();
     }).ajaxStop(function() {
         $('.overlay').hide();
     });
 
-
     // 左侧导航下拉列表
-=======
-/**
- * Created by hom on 2017/2/25.
- */
-define(['jquery'],function($){
-    // 菜单下拉
->>>>>>> 71eb6ff75713c252746848c7c8af1eecf7abe744
     $('.navs a').on('click', function() {
         $(this).next().slideToggle();
     });
 
-<<<<<<< HEAD
-    /*
-    * 根据页面路径的左侧导航
-    * 1.获取当前页面的pathname
-    * 2.获取所有的a标签，清除其他a标记的选中状态
-    * 3.获取a标记的所有父ul，让其显示
-    *
-    * */
-    //获取路径名
-    var pathname=window.location.pathname;
-    $('.navs a').removeClass('active').filter('[href="'+pathname+'"]').addClass('active').parents('ul').show();
-
-
+    /**
+     * 根据页面路径定位左侧导航
+     * 1、获取当前页面的pathname
+     * 2、然后获取所有的a，remove掉active class，
+     * 然后再使用pathname获取到应该被选中的a，给它添加active class即可。
+     * 3、最后获取该a标签所有的父ul标签，让他们展示出来，如果不展示，我是看不着的。
+     * */
+    var pathname = window.location.pathname;
+    $('.navs a').removeClass('active').filter('[href="' + pathname + '"]')
+        .addClass('active').parents('ul').show();
 
     // 退出功能
     $('#logout').on('click', function() {
@@ -42,8 +30,6 @@ define(['jquery'],function($){
                 location.href = '/html/home/login.html';
             }
         });
-
-
     });
 
     // 获取本地cookie用户信息，同时做容错处理
@@ -55,20 +41,7 @@ define(['jquery'],function($){
     }
 
     // 然后展示到左侧导航
-    $('.aside .profile h4').html(userInfo.tc_name? userInfo.tc_name: '陈光志');
-    $('.aside .profile img').attr('src', userInfo.tc_avatar? userInfo.tc_avatar: '/uploads/default.jpg');
-
-
-
-
-
-
-
+    $('.aside .profile h4').html(userInfo.tc_name? userInfo.tc_name: 'dagenimeiminga');
+    $('.aside .profile img').attr('src', userInfo.tc_avatar? userInfo.tc_avatar: '/img/default.png');
 
 });
-=======
-
-
-
-})
->>>>>>> 71eb6ff75713c252746848c7c8af1eecf7abe744
