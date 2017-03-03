@@ -1,8 +1,24 @@
 /**
  * Created by hom on 2017/2/25.
  */
-define(['jquery','common','nprogress'],function($,undefined,nprogress){
-    //¸ÃÒ³ÃæµÄËùÓĞjs¼ÓÔØÍê±ÏºóÖ´ĞĞ
+define(['jquery','common','nprogress','template'],function($,undefined,nprogress,template){
+
     nprogress.done();
+
+    //æ¸²æŸ“æ¨¡å—ï¼Œåˆ—è¡¨
+    $.get('/v6/category',function(data){
+       if(data.code==200){
+           $("#category-table-list").append(template('category-list-tpl',{list:data.result}));
+
+       }
+
+
+
+    })
+
+
+
+
+
 
 });

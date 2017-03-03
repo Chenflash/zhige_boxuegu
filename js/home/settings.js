@@ -1,8 +1,8 @@
 /**
  * Created by hom on 2017/3/3.
  */
-define(['jquery', 'common', 'nprogress', 'template', 'region', 'datepicker', 'datepickerLanguage','ckeditor'],
-    function($, undefined, nprogress, template, undefined, datepicker, undefined,ckeditor) {
+define(['jquery', 'common', 'nprogress', 'template', 'region', 'datepicker', 'datepickerLanguage', 'ckeditor','uploadify'],
+    function($, undefined, nprogress, template, undefined, datepicker, undefined, ckeditor,undefined) {
         //加载页面
     nprogress.done();
 
@@ -28,63 +28,75 @@ define(['jquery', 'common', 'nprogress', 'template', 'region', 'datepicker', 'da
             });
 
             //配置富文本编辑器
-            ckeditor.replace('ckeditor', {
+          var edit= ckeditor.replace('ckeditor', {
                 toolbarGroups: [
                     { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
                     { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+                    { name: 'links' },
                     { name: 'insert' },
+                    { name: 'forms' },
                     { name: 'tools' },
-                    { name: 'styles' },
-                    { name: 'colors' },
+                    { name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
+                    { name: 'others' },
+
                 ]
             });
+
+
+            //配置头像上传插件
+            $("#upfile").uploadify({
+                swf: '/lib/uploadify/uploadify.swf',
+                uploader: '/v6/uploader/avatar',
+                fileObjName: 'tc_avatar',
+                fileTypeExts: '*.gif; *.jpg; *.png',
+                height:$('.preview').height(),
+                buttonText:'',
+                //在头像上传成功的时候，解析字符串数据，然后把上传的地址设置。
+                // 同时将上传的地址设置到表单中，同时供用户浏览查看
+                onUploadSuccess:function(file,data){
+                   var data=JSON.parse(data);
+                   $('.preview img').attr('src',data.result.path);;
+
+
+                }
+
+
+
+            });
+
 
 
 
             //监听提交的事件
             $(".form-horizontal").on("submit",function(){
 
-               //生成一个tc_hometown参数，格式为：省|市|县
-                var hometown=$('.hometown select').map(function(){
-                  return $(this).find('option:selected').text();
+                // 生成一个tc_hometown参数，格式为：省|市|县
+                var hometown = $('.hometown select').map(function() {
+                    return $(this).find('option:selected').text();
                 }).toArray().join('|');
+                $('#ckeditor').val(edit.getData());
+                $.post('/v6/teacher/modify',$('.form-horizontal'));
 
-                //发送ajax异步的请求
                 $.ajax({
-                    url:"/v6/teacher/modify",
-                    type:'post',
-                    data:$(this).serialize()+'&tc_hometown='+hometown,
-                    success:function(data){
-                        if(data.code==200){
-                            //刷新，重新加载
+                    url: '/v6/teacher/modify',
+                    type: 'post',
+                    data: $(this).serialize() + '&tc_hometown=' + hometown,
+                    success: function(data) {
+                        if(data.code == 200) {
                             location.reload();
-
                         }
                     }
-
-
                 })
+
                 return false;
 
-
-
-
             });
-
-
-
 
 
         }
 
 
-
-
     });
-
-
-
-
 
 });
 

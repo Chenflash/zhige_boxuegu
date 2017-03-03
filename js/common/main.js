@@ -13,6 +13,7 @@ requirejs.config({
         datepickerLanguage:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
         region:'/lib/region/jquery.region',
         ckeditor:'/lib/ckeditor/ckeditor',
+        uploadify:'/lib/uploadify/jquery.uploadify',
 
 
 
