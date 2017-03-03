@@ -11,6 +11,10 @@ requirejs.config({
         util:'js/common/util',
         datepicker:'lib/bootstrap-datepicker/js/bootstrap-datepicker',
         datepickerLanguage:'lib/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        region:'/lib/region/jquery.region',
+        ckeditor:'/lib/ckeditor/ckeditor',
+
+
 
         // 自己写的路径配置
         courseAddStep1: 'js/course/add_step1',
@@ -34,7 +38,16 @@ requirejs.config({
     shim: {
         bootstrap: {
             deps: ['jquery']
+        },
+        datepickerLanguage: {
+            deps: ['jquery','datepicker']
+        },
+        ckeditor: {
+
+            exports:'CKEDITOR'
         }
+
+
     }
 });
 
