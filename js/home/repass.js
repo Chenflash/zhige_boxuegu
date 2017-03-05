@@ -2,7 +2,36 @@
  * Created by hom on 2017/2/25.
  */
 define(['jquery','common','nprogress'],function($,undefined,nprogress){
-    //¸ÃÒ³ÃæµÄËùÓĞjs¼ÓÔØÍê±ÏºóÖ´ĞĞ
+
     nprogress.done();
+
+    //å¯†ç ä¿®æ”¹
+    $("#form-Submit").on("submit",function(){
+        $.ajax({
+            url:'/v6/teacher/repass',
+            type:'post',
+            data:$(this).serialize(),
+            success:function(data){
+                if(data.code==200){
+
+                    //ç»‘å®šäº‹ä»¶,å®ç°æäº¤ç¼–è¾‘å¯†ç åï¼Œç»‘å®šé€€å‡ºçš„ç‚¹å‡»æŒ‰é’®ï¼Œé€€å‡ºç™»å½•
+                    $('#logout').trigger('click');
+
+
+                }
+
+
+            }
+
+
+
+        })
+
+
+
+    });
+
+
+
 
 });

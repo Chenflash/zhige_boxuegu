@@ -1,8 +1,20 @@
 /**
  * Created by hom on 2017/2/25.
  */
-define(['jquery','common','nprogress'],function($,undefined,nprogress){
-    //¸ÃÒ³ÃæµÄËùÓĞjs¼ÓÔØÍê±ÏºóÖ´ĞĞ
+define(['jquery','common','nprogress','template'],function($,undefined,nprogress,template){
+    // è¯¥é¡µæ‰€æœ‰çš„jsåŠ è½½å®Œæ¯•ï¼Œè¿›åº¦æ¡ç»“æŸã€‚
     nprogress.done();
+
+    //æ¸²æŸ“è¯¾ç¨‹åˆ—è¡¨çš„é¡µé¢
+    $.get("/v6/course",function(data){
+       if(data.code==200){
+           $('.courses').append(template('course-list',{list:data.result}));
+       }
+
+
+    });
+
+
+
 
 });

@@ -2,7 +2,25 @@
  * Created by hom on 2017/2/25.
  */
 define(['jquery','common','nprogress'],function($,undefined,nprogress){
-    //¸ÃÒ³ÃæµÄËùÓĞjs¼ÓÔØÍê±ÏºóÖ´ĞĞ
+
     nprogress.done();
+
+    //å‘é€ajaxè¯·æ±‚ï¼Œ è¡¨å•æäº¤åï¼Œè·³è½¬åˆ°ç¬¬ä¸€ä¸ªé¡µé¢
+    $("#add-form").on("submit",function(){
+        $.post('/v6/course/create', $(this).serialize(), function(data) {
+            //alert("è¯·æ±‚æˆåŠŸ");
+            if(data.code==200){
+                alert("è¯·æ±‚æˆåŠŸ");
+                console.log(data);
+                location.href = '/html/course/add_step1.html?cs_id=' + data.result.cs_id;
+            }
+
+        });
+        return false;
+
+
+    });
+
+
 
 });

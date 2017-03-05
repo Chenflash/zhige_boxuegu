@@ -27,7 +27,7 @@ requirejs.config({
         courseList: 'js/course/list',
         courseTopic: 'js/course/topic',
         login: 'js/home/login',
-        repass: 'js/home/repass',
+        repassWord:'js/home/repass',
         settings: 'js/home/settings',
         teacherAdd: 'js/teacher/add',
         teacherList: 'js/teacher/list',
@@ -152,7 +152,7 @@ require(['jquery', 'bootstrap', 'common']);
                 require(['login']);
                 break;
             case '/html/home/repass.html':
-                require(['repass']);
+                require(['repassWord']);
                 break;
             case '/html/home/settings.html':
                 require(['settings']);

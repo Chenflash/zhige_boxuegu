@@ -1,8 +1,52 @@
 /**
  * Created by hom on 2017/2/25.
  */
-define(['jquery','common','nprogress'],function($,undefined,nprogress){
-    //¸ÃÒ³ÃæµÄËùÓĞjs¼ÓÔØÍê±ÏºóÖ´ĞĞ
+define(['jquery','common','nprogress','util','template','uploadify'],
+    function($,undefined,nprogress,util,template,uploadify){
+    //ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½Ö´ï¿½ï¿½
     nprogress.done();
+
+    var cs_id=util.getQueryString('cs_id');
+    //é¡µé¢çš„åŠ è½½
+        $.get('/v6/course/picture',{cs_id:cs_id},function(data){
+           if(data.code==200){
+               $('.steps').html(template('step-tpl',data.result));
+
+
+              //è¯¾ç¨‹å°é¢ä¸Šä¼ 
+               $("#uploadify").uploadify({
+                   swf: '/lib/uploadify/uploadify.swf',
+                   uploader: '/v6/uploader/cover',
+                   fileObjName: 'cs_cover_original',
+                   fileTypeExts: '*.gif; *.jpg; *.png',
+                   fileSizeLimit: '2MB',
+                   buttonText: 'ä¸Šä¼ å°é¢',
+                   buttonClass: 'btn btn-success btn-sm',
+                   height: '100%',
+                   width: '100%',
+                  formData:{cs_id:cs_id},
+                  onUploadSuccess:function(file,data){
+                      data=JSON.parse(data);
+                      $('.cover-img').attr('src',data.result.path);
+
+                  }
+
+
+
+               });
+
+
+
+
+
+
+
+
+
+           }
+
+
+        });
+
 
 });
