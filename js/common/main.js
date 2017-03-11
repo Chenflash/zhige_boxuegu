@@ -3,8 +3,8 @@ requirejs.config({
     paths: {
 
         // 第三方库的路径配置
-        jquery: 'lib/jquery/jquery.min',
-        bootstrap: 'lib/bootstrap/js/bootstrap.min',
+        jquery: './node_modules/jquery/dist/jquery',
+        bootstrap: './node_modules/bootstrap/dist/js/bootstrap.min',
         jqueryCookie: 'lib/jquery-cookie/jquery.cookie',
         nprogress: 'lib/nprogress/nprogress',
         template: 'lib/artTemplate-3.0.1/template',
